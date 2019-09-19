@@ -18,6 +18,8 @@ class PetList {
   factory PetList.fromJson(Map<String, dynamic> parsedJson) {
 
     var list = parsedJson["pets"] as List;
+    //print('petlist from json');
+    //print(list);
     List<Pet> petList = list.map((i) => Pet.fromJson(i)).toList();
 
     return PetList(

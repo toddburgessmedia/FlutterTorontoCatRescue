@@ -9,12 +9,13 @@ abstract class PetListService extends ChopperService {
 
   static PetListService create([ChopperClient client]) => _$PetListService(client);
 
-  @Get(path: '/search/pets_at_shelter?output=json')
-  Future<Response<PetList>> getPetList(
+  @Get(path: '/search/pets_at_shelter')
+  Future<Response> getPetList(
       @Query('key') String key,
       @Query('shelter_id') String shelter_id,
       @Query('start_number') int start_number,
-      @Query('end_number') int end_number
+      @Query('end_number') int end_number,
+      @Query('output') String output
   );
 
 }

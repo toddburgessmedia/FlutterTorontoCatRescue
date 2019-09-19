@@ -12,8 +12,8 @@ class PetListBloc implements Bloc {
 
   Stream<PetList> get petListStream => _petListController.stream;
 
-  void updatePetList() {
-    petListProvider.loadPetList();
+  void updatePetList() async {
+    await petListProvider.loadPetList();
     _petListController.sink.add(petListProvider.petList);
   }
 

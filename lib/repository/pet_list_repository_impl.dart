@@ -26,9 +26,15 @@ class PetListRepositoryImpl implements PetListRepository {
 
     final petListService = PetListService.create(chopper);
 
-    final petList = await petListService.getPetList(apiKey, shelterID, 0, 1000);
+    final response = await petListService.getPetList(apiKey, shelterID, 1, 1000,'json');
 
-    return petList.body;
+    //print(response.body);
+    final jsonData = json.decode(response.bodyString);
+
+    final petList = PetList.fromJson(jsonData);
+    print("pet count ${petList.petCount}");
+    petList.petList.sort((a,b) => a.petName.compareTo(b.petName));
+    return petList;
   }
 
 }

@@ -5,12 +5,14 @@ import 'package:cat_adopt_flutter/repository/pet_list_repository_impl.dart';
 
 class PetListProvider {
 
- PetList petList;
+ PetList petList = PetList(totalPets: 0,petCount: 0);
  final PetListRepository repo = PetListRepositoryImpl();
 
- void loadPetList() async {
+ Future<PetList> loadPetList() async {
 
-   petList = await repo.getPetList("0", "1000");
+   final response = await repo.getPetList("0", "1000");
+   petList = response;
+   return petList;
 
  }
 
