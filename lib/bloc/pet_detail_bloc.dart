@@ -7,7 +7,7 @@ import 'package:cat_adopt_flutter/model/pet_detail.dart';
 
 class PetDetailBloc implements Bloc {
 
-  final _petDetailController = StreamController<PetDetail>();
+  final _petDetailController = StreamController<PetDetail>.broadcast();
   PetDetailProvider provider = PetDetailProvider();
 
   Stream<PetDetail> get petDetailStream => _petDetailController.stream;
@@ -23,3 +23,5 @@ class PetDetailBloc implements Bloc {
   }
 
 }
+
+PetDetailBloc petDetailBloc = PetDetailBloc();

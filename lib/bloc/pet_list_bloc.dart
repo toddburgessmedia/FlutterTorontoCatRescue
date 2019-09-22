@@ -7,7 +7,7 @@ import 'package:cat_adopt_flutter/model/pet_list.dart';
 
 class PetListBloc implements Bloc {
 
-  final _petListController = StreamController<PetList>();
+  final _petListController = StreamController<PetList>.broadcast();
   PetListProvider petListProvider = PetListProvider();
 
   Stream<PetList> get petListStream => _petListController.stream;

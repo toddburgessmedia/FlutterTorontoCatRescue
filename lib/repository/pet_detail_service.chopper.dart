@@ -21,7 +21,7 @@ class _$PetDetailService extends PetDetailService {
       'pet_id': petID,
       'key': apikey,
       'shelter_id': shelterID,
-      'ouput': output,
+      'output': output,
       'v': v
     };
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);

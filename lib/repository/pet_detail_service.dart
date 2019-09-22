@@ -15,7 +15,7 @@ abstract class PetDetailService extends ChopperService {
       @Query("pet_id") String petID,
       @Query("key") String apikey,
       @Query("shelter_id") String shelterID,
-      @Query("ouput") String output,  // ="json",
+      @Query("output") String output,  // ="json",
       @Query("v") String v  //= "2" });
   );
 

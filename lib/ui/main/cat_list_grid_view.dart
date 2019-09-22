@@ -1,4 +1,5 @@
 import 'package:cat_adopt_flutter/model/pet_list.dart';
+import 'package:cat_adopt_flutter/ui/pet_detail_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -20,15 +21,25 @@ class CatListGridView extends StatelessWidget {
     return age.substring(0,1).toUpperCase() + age.substring(1);
   }
 
+  _getPetDetailScreen(String petID, BuildContext context) {
+
+   Navigator.push(
+       context,
+        MaterialPageRoute(builder: (context) => PetDetailPage(petID: petID))
+   );
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return GridView.count(
         crossAxisCount: 2,
         childAspectRatio: 1.15,
         children: petList.petList
-            .map((pet) => Card(
-                    child: Container(
-                        child: Column(
+            .map((pet) => GridTile(
+                      child: InkResponse(
+                          onTap: () => _getPetDetailScreen(pet.petID, context),
+                          child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[

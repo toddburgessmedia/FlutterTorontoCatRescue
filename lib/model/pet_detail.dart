@@ -13,7 +13,7 @@ class PetDetail {
 
   factory PetDetail.fromJson(Map<String,dynamic> parsedJson) {
 
-    var petDetail = parsedJson["pet"] as PetDetailInfo;
+    var petDetail = PetDetailInfo.fromJson(parsedJson["pet"]);
 
     return PetDetail(
       status: parsedJson["status"],
