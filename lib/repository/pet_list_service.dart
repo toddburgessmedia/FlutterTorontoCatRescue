@@ -11,11 +11,11 @@ abstract class PetListService extends ChopperService {
 
   @Get(path: '/search/pets_at_shelter')
   Future<Response> getPetList(
-      @Query('key') String key,
-      @Query('shelter_id') String shelter_id,
-      @Query('start_number') int start_number,
-      @Query('end_number') int end_number,
-      @Query('output') String output
+    @Query('key') String key,
+    @Query('shelter_id') String shelter_id,
+    @Query('start_number') int start_number,
+    @Query('end_number') int end_number,
+    @Query('output') String output
   );
 
 }
