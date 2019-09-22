@@ -1,4 +1,5 @@
 
+import 'package:cat_adopt_flutter/ui/main/cat_list_grid_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cat_adopt_flutter/bloc/pet_list_bloc.dart';
 import 'package:cat_adopt_flutter/model/pet_list.dart';
@@ -31,21 +32,11 @@ class _MainHomePageState extends State<MainHomePage> {
             stream: petListBloc.petListStream,
             builder: (context, AsyncSnapshot<PetList> snapshot) {
               if (snapshot.hasData) {
-                return ListView.builder(
-                  itemCount: snapshot.data.petList.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      leading: Image.network(snapshot.data.petList[index].largePhotoURL),
-                      title: Text(snapshot.data.petList[index].petName),
-                      subtitle: Text(snapshot.data.petList[index].primaryBreed),
-                      isThreeLine: true,
-                    );
-                  },
-                );
-              } else if (snapshot.hasError){
+                return CatListGridView(petList: snapshot.data);
+              } else if (snapshot.hasError) {
                 return Text ('Error');
               }
-              return Center(child: CircularProgressIndicator());
+              return Center(child: CircularProgressIndicator()); // still waiting for data
             }));
   }
 }

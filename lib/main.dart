@@ -12,7 +12,7 @@ class TCRPetList extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MainHomePage(title: 'Todd\'s Mystery App'),
+      home: MainHomePage(title: 'Toronto Cat Rescue'),
     );
   }
 }
