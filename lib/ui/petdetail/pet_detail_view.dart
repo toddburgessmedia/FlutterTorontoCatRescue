@@ -15,11 +15,9 @@ class PetDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        //children: <Widget>[
           Center(child: Text("Meow. My name is ${petDetail.petName}", textScaleFactor: 2,)),
           PetDetailPhoto(photos: petDetail.petImages),
           Html(data: petDetail.description),
-        //],
       ]
     );
 
