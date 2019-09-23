@@ -3,7 +3,7 @@ import 'package:cat_adopt_flutter/model/pet_detail_info.dart';
 import 'package:cat_adopt_flutter/ui/petdetail/pet_detail_photo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_html_view/flutter_html_view.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class PetDetailView extends StatelessWidget {
 
@@ -13,14 +13,14 @@ class PetDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: <Widget>[
-          Text("Meow. My name is ${petDetail.petName}", textScaleFactor: 2,),
+    return ListView(
+      children: <Widget>[
+        //children: <Widget>[
+          Center(child: Text("Meow. My name is ${petDetail.petName}", textScaleFactor: 2,)),
           PetDetailPhoto(photos: petDetail.petImages),
-          Expanded(child: Text(petDetail.description))
-        ],
-      ),
+          Html(data: petDetail.description),
+        //],
+      ]
     );
 
   }
