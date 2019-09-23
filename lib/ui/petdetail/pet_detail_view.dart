@@ -1,5 +1,6 @@
 
 import 'package:cat_adopt_flutter/model/pet_detail_info.dart';
+import 'package:cat_adopt_flutter/ui/petdetail/pet_detail_additional_info.dart';
 import 'package:cat_adopt_flutter/ui/petdetail/pet_detail_photo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,9 @@ class PetDetailView extends StatelessWidget {
       children: <Widget>[
           Center(child: Text("Meow. My name is ${petDetail.petName}", textScaleFactor: 2,)),
           PetDetailPhoto(photos: petDetail.petImages),
+          PetDetailAdditionalInfo(info: petDetail),
           Html(data: petDetail.description),
+
       ]
     );
 
