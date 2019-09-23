@@ -20,6 +20,10 @@ class PetDetailView extends StatelessWidget {
           PetDetailPhoto(photos: petDetail.petImages),
           PetDetailAdditionalInfo(info: petDetail),
           Html(data: petDetail.description),
+          RaisedButton(
+            onPressed: () => print('Buton pressed'),
+            child: Text('Adopt ${petDetail.petName}'),
+          )
 
       ]
     );

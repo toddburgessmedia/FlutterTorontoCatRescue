@@ -34,7 +34,7 @@ class _MainHomePageState extends State<MainHomePage> {
               if (snapshot.hasData) {
                 return CatListGridView(petList: snapshot.data);
               } else if (snapshot.hasError) {
-                return Text ('Error');
+                return Center(child: Text ('Error'));
               }
               return Center(child: CircularProgressIndicator()); // still waiting for data
             }));
