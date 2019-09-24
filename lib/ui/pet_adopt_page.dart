@@ -36,7 +36,6 @@ class _PetAdoptPageState extends State<PetAdoptPage> {
     final body = "I have fallen in love and want to adopt!";
     final email = "mailto:" + widget.info.email + subject + body;
     launch(email);
-    print (await canLaunch(email));
   }
 
   @override
@@ -57,7 +56,7 @@ class _PetAdoptPageState extends State<PetAdoptPage> {
             children: <Widget>[
               RaisedButton(
                 child: Text('E-Mail'),
-                onPressed: () => print('Email'),
+                onPressed: () => _emailAdoptionTeam(),
               ),
               RaisedButton(
                 child: Text('Call'),

@@ -14,7 +14,7 @@ class PetDetailAdditionalInfo extends StatelessWidget {
     if (value == 1) {
       return Text(key);
     } else if (value == 0) {
-      return Text('Not ${key}',style: TextStyle(color: Colors.redAccent));
+      return Text('Not ${key}',style: TextStyle(color: Colors.deepOrange));
     } else {
       return SizedBox.shrink(); // use for -1 value
     }
@@ -23,7 +23,10 @@ class PetDetailAdditionalInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      borderOnForeground: false,
+      color: Colors.lightGreen,
+      elevation: 5,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+      borderOnForeground: true,
       child: Column(
         children: <Widget>[
           Divider(),

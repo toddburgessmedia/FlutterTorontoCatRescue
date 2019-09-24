@@ -42,7 +42,8 @@ class _PetDetailPhotoState extends State<PetDetailPhoto> {
                   InkWell(
                       onTap: () => _changeImage(photo.originalUrl) ,
                       child: Image.network(photo.thumbnailUrl))
-              ).toList()
+
+    ).toList()
           ),
         ],
     );
