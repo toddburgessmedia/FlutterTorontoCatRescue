@@ -1,5 +1,6 @@
 
 import 'package:cat_adopt_flutter/model/pet_detail_info.dart';
+import 'package:cat_adopt_flutter/ui/pet_adopt_page.dart';
 import 'package:cat_adopt_flutter/ui/petdetail/pet_detail_additional_info.dart';
 import 'package:cat_adopt_flutter/ui/petdetail/pet_detail_photo.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,6 +13,15 @@ class PetDetailView extends StatelessWidget {
 
   PetDetailView({Key key,this.petDetail}) : super();
 
+  void _getAdoptionScreen(PetDetailInfo info, BuildContext context) {
+
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => PetAdoptPage(info: info))
+    );
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -21,7 +31,7 @@ class PetDetailView extends StatelessWidget {
           PetDetailAdditionalInfo(info: petDetail),
           Html(data: petDetail.description),
           RaisedButton(
-            onPressed: () => print('Buton pressed'),
+            onPressed: () => _getAdoptionScreen(petDetail,context),
             child: Text('Adopt ${petDetail.petName}'),
           )
 

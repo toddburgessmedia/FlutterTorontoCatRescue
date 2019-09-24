@@ -39,7 +39,7 @@ class _PetDetailPhotoState extends State<PetDetailPhoto> {
             Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: widget.photos.map((photo) =>
-                  GestureDetector(
+                  InkWell(
                       onTap: () => _changeImage(photo.originalUrl) ,
                       child: Image.network(photo.thumbnailUrl))
               ).toList()

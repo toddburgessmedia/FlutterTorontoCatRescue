@@ -21,7 +21,7 @@ class CatListGridView extends StatelessWidget {
     return age.substring(0,1).toUpperCase() + age.substring(1);
   }
 
-  _getPetDetailScreen(String petID, BuildContext context) {
+  void _getPetDetailScreen(String petID, BuildContext context) {
 
    Navigator.push(
        context,
@@ -32,7 +32,8 @@ class CatListGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
+    return
+      GridView.count(
         crossAxisCount: 2,
         childAspectRatio: 1.15,
         children: petList.petList
@@ -41,7 +42,6 @@ class CatListGridView extends StatelessWidget {
                           onTap: () => _getPetDetailScreen(pet.petID, context),
                           child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
                                 Center(child: Image.network(pet.resultsPhotoURL,fit: BoxFit.scaleDown,),),
                                 Center(child: Text(pet.petName,style: TextStyle(fontWeight: FontWeight.bold),),),
