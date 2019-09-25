@@ -65,7 +65,7 @@ class PetDetailInfo {
     this.stateCode,
     this.sex,
     this.shelterID,
-    this.bondedTo,
+    this.bondedTo = -1,
     this.petImages
   });
 

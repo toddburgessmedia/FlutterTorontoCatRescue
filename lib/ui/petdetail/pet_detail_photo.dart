@@ -21,6 +21,7 @@ class _PetDetailPhotoState extends State<PetDetailPhoto> {
 
   @override
   void initState() {
+    super.initState();
     displayphoto = widget.photos[0].originalUrl;
   }
 
@@ -43,7 +44,7 @@ class _PetDetailPhotoState extends State<PetDetailPhoto> {
                       onTap: () => _changeImage(photo.originalUrl) ,
                       child: Image.network(photo.thumbnailUrl))
 
-    ).toList()
+                  ).toList()
           ),
         ],
     );

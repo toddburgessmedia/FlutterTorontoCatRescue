@@ -1,10 +1,13 @@
 
+import 'package:cat_adopt_flutter/model/limited_pet.dart';
+import 'package:cat_adopt_flutter/model/limited_pet_detail.dart';
 import 'package:cat_adopt_flutter/model/pet_detail_info.dart';
 
 class PetDetail {
 
   PetDetailInfo petdetail;
   String status;
+  LimitedPet bondedFriend;
 
   PetDetail({
     this.petdetail,
@@ -20,5 +23,9 @@ class PetDetail {
       petdetail: petDetail
     );
 
+  }
+
+  set newfriend (LimitedPet friend) {
+    bondedFriend = friend;
   }
 }

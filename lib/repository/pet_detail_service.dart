@@ -21,7 +21,7 @@ abstract class PetDetailService extends ChopperService {
 
   @Get(path: '/search/limited_pet_details')
   Future<Response> getLimitedPetDetail(
-    @Query("pet_id") String petID,
+    @Query("pet_id") int petID,
     @Query("key") String apikey,
     @Query("shelter_id") String shelterID,
     @Query("output") String output, // = "json",

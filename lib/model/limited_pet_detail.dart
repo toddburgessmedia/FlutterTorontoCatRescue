@@ -3,7 +3,7 @@ import 'package:cat_adopt_flutter/model/pet_detail_image.dart';
 
 class LimitedPetDetail {
 
-  String petID;
+  int petID;
   String petName;
   List<PetDetailImage> images;
   String petDetailsUrl;

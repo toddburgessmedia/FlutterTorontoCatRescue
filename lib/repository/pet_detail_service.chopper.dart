@@ -29,7 +29,7 @@ class _$PetDetailService extends PetDetailService {
   }
 
   Future<Response> getLimitedPetDetail(
-      String petID, String apikey, String shelterID, String output, String v) {
+      int petID, String apikey, String shelterID, String output, String v) {
     final $url = 'https://api.adoptapet.com/search/limited_pet_details';
     final Map<String, dynamic> $params = {
       'pet_id': petID,
