@@ -40,9 +40,12 @@ class _PetDetailPhotoState extends State<PetDetailPhoto> {
             Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: widget.photos.map((photo) =>
-                  InkWell(
-                      onTap: () => _changeImage(photo.originalUrl) ,
-                      child: Image.network(photo.thumbnailUrl))
+                  Flexible(
+                    flex: 1,
+                    child: InkWell(
+                        onTap: () => _changeImage(photo.originalUrl) ,
+                        child: Image.network(photo.thumbnailUrl)),
+                  )
 
                   ).toList()
           ),
