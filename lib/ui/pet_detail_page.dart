@@ -29,7 +29,7 @@ class _PetDetailPageState extends State<PetDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Cat Infromation'),
+          title: Text('Cat Information'),
         ),
         body: StreamBuilder(
           stream: petDetailBloc.petDetailStream,
