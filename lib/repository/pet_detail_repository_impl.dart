@@ -34,8 +34,8 @@ class PetDetailRepositoryImpl implements PetDetailRepository {
     if (petDetail.petdetail.bondedTo != null) {
       //print("we are a bonded pair ${petDetail.petdetail.bondedTo}");
       final friend = await getLimitedPetDetail(petDetail.petdetail.bondedTo, petDetailService);
-      petDetail.newfriend = friend;
-      print('friend is ${petDetail.bondedFriend.pet.petName}');
+      petDetail.petdetail.bondedFriend = friend;
+      print('friend is ${petDetail.petdetail.bondedFriend.pet.petName}');
     }
 
     return petDetail;

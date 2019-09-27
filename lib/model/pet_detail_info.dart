@@ -1,5 +1,8 @@
 
+import 'package:cat_adopt_flutter/model/limited_pet_detail.dart';
 import 'package:cat_adopt_flutter/model/pet_detail_image.dart';
+
+import 'limited_pet.dart';
 
 class PetDetailInfo {
 
@@ -34,6 +37,7 @@ class PetDetailInfo {
   int shelterID;
   int bondedTo;
   List<PetDetailImage> petImages;
+  LimitedPet bondedFriend;
 
   PetDetailInfo({
     this.shelterName,
@@ -68,6 +72,10 @@ class PetDetailInfo {
     this.bondedTo = -1,
     this.petImages
   });
+
+  set newfriend (LimitedPet friend) {
+    bondedFriend = friend;
+  }
 
   factory PetDetailInfo.fromJson(Map<String,dynamic> parsedJson) {
 
