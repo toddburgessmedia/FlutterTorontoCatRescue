@@ -36,7 +36,7 @@ class _PetDetailPhotoState extends State<PetDetailPhoto> {
   Widget build(BuildContext context) {
     return Column (
         children: <Widget>[
-          Image.network(displayphoto),
+          Image.network(displayphoto,height: 350,),
             Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: widget.photos.map((photo) =>
