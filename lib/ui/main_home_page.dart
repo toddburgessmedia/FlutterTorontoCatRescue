@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:cat_adopt_flutter/bloc/pet_list_bloc.dart';
 import 'package:cat_adopt_flutter/model/pet_list.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MainHomePage extends StatefulWidget {
   MainHomePage({Key key, this.title}) : super(key: key);
@@ -58,6 +59,32 @@ class _MainHomePageState extends State<MainHomePage> {
                 return Center(child: Text ('Error'));
               }
               return Center(child: CircularProgressIndicator()); // still waiting for data
-            }));
+            }
+            ),
+        drawer: Drawer(
+            child: ListView(
+              children: <Widget>[
+                  DrawerHeader(
+                    child: Image(
+                      image: AssetImage('images/TCR-Logo-RGB.jpg'),
+                      height: 150,
+                    ),
+                  ),
+                ListTile(
+                  title: Text('Webpage'),
+                  onTap: () => launch("https://torontocatrescue.ca"),
+                ),
+                ListTile(
+                  title: Text('Volunteer'),
+                  onTap: () => launch("https://torontocatrescue.ca/volunteer/"),
+                ),
+                ListTile(
+                  title: Text('Donate'),
+                  onTap: () => launch("https://www.canadahelps.org/en/dn/14811"),
+                ),
+              ],
+            )
+    ),
+    );
   }
 }
