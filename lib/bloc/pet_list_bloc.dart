@@ -17,6 +17,16 @@ class PetListBloc implements Bloc {
     _petListController.sink.add(petListProvider.petList);
   }
 
+  void filterBySex(String sex) {
+    petListProvider.getPetsBySex(sex);
+    _petListController.sink.add(petListProvider.filtered);
+  }
+
+  void filterByAge(String age) {
+    petListProvider.getPetsByAge(age);
+    _petListController.sink.add(petListProvider.filtered);
+  }
+
   @override
   void dispose() {
     _petListController.close();

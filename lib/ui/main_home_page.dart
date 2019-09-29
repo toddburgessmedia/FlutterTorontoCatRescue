@@ -1,5 +1,6 @@
 
 import 'package:cat_adopt_flutter/ui/main/cat_list_grid_view.dart';
+import 'package:cat_adopt_flutter/ui/main/pet_list_filter_alert.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cat_adopt_flutter/bloc/pet_list_bloc.dart';
 import 'package:cat_adopt_flutter/model/pet_list.dart';
@@ -22,11 +23,31 @@ class _MainHomePageState extends State<MainHomePage> {
     petListBloc.updatePetList();
   }
 
+  Future<void> _showFilterAlert(BuildContext context) {
+
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return PetListFilterAlert(context: context);
+        }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.refresh),
+              onPressed: () => petListBloc.updatePetList(),
+            ),
+            IconButton(
+              icon: Icon(Icons.filter),
+              onPressed: () => _showFilterAlert(context),
+            )
+          ],
         ),
         body: StreamBuilder(
             stream: petListBloc.petListStream,
