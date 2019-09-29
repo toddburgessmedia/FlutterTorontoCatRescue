@@ -11,7 +11,8 @@ class TCRPetList extends StatelessWidget {
     return MaterialApp(
       title: 'Toronto Cat Rescue',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        //primarySwatch: Colors.blue,
+        primaryColor: Color.fromARGB(255, 0, 33, 55)
       ),
 //      home: MainHomePage(title: 'Toronto Cat Rescue'),
       home: SplashScreenPage(),
