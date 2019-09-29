@@ -36,7 +36,7 @@ class _PetDetailPhotoState extends State<PetDetailPhoto> {
   Widget build(BuildContext context) {
     return Column (
         children: <Widget>[
-          Image.network(displayphoto,height: 350,),
+          FadeInImage.assetNetwork(placeholder: 'images/tcr-placeholder.png' , image: displayphoto,height: 350, ),
             Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: widget.photos.map((photo) =>
@@ -44,7 +44,8 @@ class _PetDetailPhotoState extends State<PetDetailPhoto> {
                     flex: 1,
                     child: InkWell(
                         onTap: () => _changeImage(photo.originalUrl) ,
-                        child: Image.network(photo.thumbnailUrl, height: 100),
+                        child:
+                          FadeInImage.assetNetwork(placeholder: 'images/tcr-placeholder.png' , image: photo.thumbnailUrl,height: 100, )
                   )
 
                   )).toList()

@@ -47,7 +47,7 @@ class CatListGridView extends StatelessWidget {
                             child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                  Center(child: Image.network(pet.resultsPhotoURL,fit: BoxFit.scaleDown,),),
+                                  Center(child: FadeInImage.assetNetwork(placeholder: 'images/tcr-placeholder.png' , image: pet.resultsPhotoURL,height: 100, ),),
                                   Center(child: Text(pet.petName,style: TextStyle(fontWeight: FontWeight.bold),),),
                                   Center(child: Text(_getSex(pet.sex))),
                                   Center(child: Text(pet.primaryBreed)),
