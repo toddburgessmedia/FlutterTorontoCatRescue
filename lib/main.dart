@@ -1,5 +1,6 @@
 
 import 'package:cat_adopt_flutter/ui/main_home_page.dart';
+import 'package:cat_adopt_flutter/ui/splash_screen_page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(TCRPetList());
@@ -12,7 +13,9 @@ class TCRPetList extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MainHomePage(title: 'Toronto Cat Rescue'),
+//      home: MainHomePage(title: 'Toronto Cat Rescue'),
+      home: SplashScreenPage(),
+
     );
   }
 }
