@@ -21,7 +21,15 @@ class PetDetailView extends StatelessWidget {
         context,
         MaterialPageRoute(builder: (context) => PetAdoptPage(info: info))
     );
+  }
 
+  Widget getAdoptText() {
+
+    if (petDetail.bondedTo != null) {
+      return Text('Adopt ${petDetail.petName} and ${petDetail.bondedFriend.pet.petName}');
+    } else {
+      return Text('Adopt ${petDetail.petName}');
+    }
   }
 
   @override
@@ -35,7 +43,7 @@ class PetDetailView extends StatelessWidget {
           Html(data: petDetail.description),
           RaisedButton(
             onPressed: () => _getAdoptionScreen(petDetail,context),
-            child: Text('Adopt ${petDetail.petName}'),
+            child: getAdoptText()
           )
 
       ]
