@@ -23,11 +23,9 @@ class _PetAdoptPageState extends State<PetAdoptPage> {
   void _callAdoptionTeam() async {
 
     final phone = widget.info.areaCode + widget.info.phoneNumber;
-    launch("tel://"+phone);
-    print (await canLaunch("tel://"+phone));
-
-    print("click");
-//    launch("http://www.google.com");
+    if (await canLaunch("tel://"+phone)) {
+      launch("tel://" + phone);
+    }
   }
 
   void _emailAdoptionTeam() async {
