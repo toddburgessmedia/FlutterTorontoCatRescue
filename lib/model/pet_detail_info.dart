@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:cat_adopt_flutter/model/limited_pet_detail.dart';
 import 'package:cat_adopt_flutter/model/pet_detail_image.dart';
 
@@ -91,7 +93,7 @@ class PetDetailInfo {
       goodWithDogs: parsedJson["good_with_dogs"],
       lastModified: parsedJson["last_modified"],
       declawed: parsedJson["declawed"],
-      description: parsedJson["description"],
+      description: parsedJson["description"].toString().replaceAll("â", "'"),
       city: parsedJson["addr_city"],
       spayed: parsedJson["spayed_neutered"],
       furColour: parsedJson["color"],
