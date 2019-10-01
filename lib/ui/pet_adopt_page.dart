@@ -32,8 +32,8 @@ class _PetAdoptPageState extends State<PetAdoptPage> {
 
   void _emailAdoptionTeam() async {
 
-    final subject = "Subject=I want to adopt ${widget.info.petName}";
-    final body = "I have fallen in love and want to adopt!";
+    final subject = "?subject=I want to adopt ${widget.info.petName}&".replaceAll(" ", "%20");
+    final body = "body=I have fallen in love and want to adopt ${widget.info.petName}.\n".replaceAll(" ", "%20");
     final email = "mailto:" + widget.info.email + subject + body;
     launch(email);
   }
