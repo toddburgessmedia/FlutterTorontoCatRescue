@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-// TODO: verify launchers work on actual device
 class PetAdoptPage extends StatefulWidget {
 
   final PetDetailInfo info;
@@ -22,17 +21,17 @@ class _PetAdoptPageState extends State<PetAdoptPage> {
 
   void _callAdoptionTeam() async {
 
-    final phone = widget.info.areaCode + widget.info.phoneNumber;
-    if (await canLaunch("tel://"+phone)) {
-      launch("tel://" + phone);
+    final phoneURI = "tel://" + widget.info.areaCode + widget.info.phoneNumber;
+    if (await canLaunch(phoneURI)) {
+      launch(phoneURI);
     }
   }
 
   void _emailAdoptionTeam() async {
 
-    final subject = "?subject=I want to adopt ${widget.info.petName}&".replaceAll(" ", "%20");
-    final body = "body=I have fallen in love and want to adopt ${widget.info.petName}.\n".replaceAll(" ", "%20");
-    final email = "mailto:" + widget.info.email + subject + body;
+    final subject = "?subject=Adoption Equiry for ${widget.info.petName}&";
+    final body = "body=I have fallen in love and want to adopt ${widget.info.petName}.\n\nMy phone number is: ";
+    final email = "mailto:${widget.info.email}$subject$body".replaceAll(" ", "%20");
     launch(email);
   }
 
