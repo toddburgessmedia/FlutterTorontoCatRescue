@@ -30,13 +30,22 @@ class CatListGridView extends StatelessWidget {
 
   }
 
+  int _getGridSize(BuildContext context) {
+
+    if (MediaQuery.of(context).orientation == Orientation.portrait) {
+      return 2;
+    } else {
+      return 3;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return
       ListView(
         children: <Widget> [
           GridView.count(
-          crossAxisCount: 2,
+          crossAxisCount: _getGridSize(context),
           childAspectRatio: 1.15,
           shrinkWrap: true,
           physics: BouncingScrollPhysics(),
