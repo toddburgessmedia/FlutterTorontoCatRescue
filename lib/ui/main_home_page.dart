@@ -16,12 +16,28 @@ class MainHomePage extends StatefulWidget {
   _MainHomePageState createState() => _MainHomePageState();
 }
 
-class _MainHomePageState extends State<MainHomePage> {
+class _MainHomePageState extends State<MainHomePage> with WidgetsBindingObserver {
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     petListBloc.updatePetList();
+  }
+
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+
+    if (state == AppLifecycleState.resumed) {
+      print('we resumed');
+      petListBloc.updatePetList();
+    }
   }
 
   Future<void> _showFilterAlert(BuildContext context) {
