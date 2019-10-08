@@ -7,13 +7,24 @@ import 'package:cat_adopt_flutter/model/pet_list.dart';
 
 class PetListBloc implements Bloc {
 
+  bool lazy = false;
+
+  PetListBloc(this.lazy);
+
+
   final _petListController = StreamController<PetList>.broadcast();
   PetListProvider petListProvider = PetListProvider();
 
   Stream<PetList> get petListStream => _petListController.stream;
 
   void updatePetList() async {
-    await petListProvider.loadPetList();
+
+    if (lazy) {
+      await petListProvider.loadPetListPage();
+    } else {
+      await petListProvider.loadPetListAll();
+    }
+
     _petListController.sink.add(petListProvider.petList);
   }
 
@@ -33,4 +44,4 @@ class PetListBloc implements Bloc {
   }
 }
 
-PetListBloc petListBloc = PetListBloc();
+PetListBloc petListBloc = PetListBloc(false);
