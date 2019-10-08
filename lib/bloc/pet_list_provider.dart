@@ -12,11 +12,23 @@ class PetListProvider {
  String sexFilter = 'a';
  String ageFilter = 'any age';
 
+ int petCount = 0;
+ int start = 1;  // always start at 1 due to API
+ int end = 1000;
+
  Future<PetList> loadPetList() async {
 
-   final response = await repo.getPetList("0", "1000");
+   final response = await repo.getPetList(1, 100);
    petList = response;
+
    return petList;
+
+ }
+
+ Future<void> getPetCount() async {
+
+   petCount = await repo.getPetListMetaCount();
+   end = petCount;
 
  }
  

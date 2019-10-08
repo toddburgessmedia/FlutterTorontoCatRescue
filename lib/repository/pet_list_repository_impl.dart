@@ -13,20 +13,26 @@ class PetListRepositoryImpl implements PetListRepository {
 
   final String shelterID = ApiKeys.shelterID;
   final String apiKey = ApiKeys.apiKey;
+  final String output = 'json';
+  final int meta = 1;
+
+  ChopperClient chopper;
+
+  PetListRepositoryImpl() {
+    chopper = ChopperClient(
+        services: [
+          PetListService.create()
+        ],
+        converter: JsonConverter()
+    );
+  }
 
   @override
-  Future<PetList> getPetList(String start, String end) async {
-
-    final chopper = ChopperClient(
-      services: [
-        PetListService.create()
-      ],
-      converter: JsonConverter()
-    );
+  Future<PetList> getPetList(int start, int end) async {
 
     final petListService = PetListService.create(chopper);
 
-    final response = await petListService.getPetList(apiKey, shelterID, 1, 1000,'json');
+    final response = await petListService.getPetList(apiKey, shelterID, start, end,output);
 
     //print(response.body);
     final jsonData = json.decode(response.bodyString);
@@ -36,5 +42,20 @@ class PetListRepositoryImpl implements PetListRepository {
     petList.petList.sort((a,b) => a.petName.compareTo(b.petName));
     return petList;
   }
+
+  @override
+  Future<int> getPetListMetaCount() async {
+
+    final petListService = PetListService.create(chopper);
+    final response = await petListService.getPetListMeta(apiKey, shelterID, 1, 2000, output, meta);
+
+    final jsonData = json.decode(response.bodyString);
+    final petList = PetList.fromJson(jsonData);
+    print("pet count meta ${petList.petCount}");
+
+    return petList.petCount;
+
+  }
+
 
 }

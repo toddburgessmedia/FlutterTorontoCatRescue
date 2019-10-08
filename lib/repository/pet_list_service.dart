@@ -18,4 +18,14 @@ abstract class PetListService extends ChopperService {
     @Query('output') String output
   );
 
+  @Get(path: '/search/pets_at_shelter')
+  Future<Response> getPetListMeta(
+      @Query('key') String key,
+      @Query('shelter_id') String shelter_id,
+      @Query('start_number') int start_number,
+      @Query('end_number') int end_number,
+      @Query('output') String output,
+      @Query('meta_only') int meta_only
+  );
+
 }

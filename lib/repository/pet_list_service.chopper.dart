@@ -27,4 +27,19 @@ class _$PetListService extends PetListService {
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
     return client.send<dynamic, dynamic>($request);
   }
+
+  Future<Response> getPetListMeta(String key, String shelter_id,
+      int start_number, int end_number, String output, int meta_only) {
+    final $url = 'https://api.adoptapet.com/search/pets_at_shelter';
+    final Map<String, dynamic> $params = {
+      'key': key,
+      'shelter_id': shelter_id,
+      'start_number': start_number,
+      'end_number': end_number,
+      'output': output,
+      'meta_only': meta_only
+    };
+    final $request = Request('GET', $url, client.baseUrl, parameters: $params);
+    return client.send<dynamic, dynamic>($request);
+  }
 }
