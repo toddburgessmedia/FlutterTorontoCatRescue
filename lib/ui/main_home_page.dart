@@ -6,6 +6,7 @@ import 'package:cat_adopt_flutter/bloc/pet_list_bloc.dart';
 import 'package:cat_adopt_flutter/model/pet_list.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flushbar/flushbar.dart';
 
 class MainHomePage extends StatefulWidget {
   MainHomePage({Key key, this.title}) : super(key: key);
@@ -25,7 +26,6 @@ class _MainHomePageState extends State<MainHomePage> with WidgetsBindingObserver
     petListBloc.updatePetList();
   }
 
-
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
@@ -36,8 +36,18 @@ class _MainHomePageState extends State<MainHomePage> with WidgetsBindingObserver
 
     if (state == AppLifecycleState.resumed) {
       print('we resumed');
-      petListBloc.updatePetList();
+      _updatePetList();
     }
+  }
+
+  void _updatePetList() {
+    petListBloc.updatePetList();
+    Flushbar(
+      title: 'Refreshing Cat List',
+      message: 'Updating the list of adorable cats',
+      duration: Duration(seconds: 5),
+      icon: Icon(Icons.refresh,color: Colors.white,),
+    )..show(context);
   }
 
   Future<void> _showFilterAlert(BuildContext context) {
@@ -46,6 +56,7 @@ class _MainHomePageState extends State<MainHomePage> with WidgetsBindingObserver
         context: context,
         builder: (BuildContext context) {
           return PetListFilterAlert(context: context);
+
         }
     );
   }
@@ -58,7 +69,7 @@ class _MainHomePageState extends State<MainHomePage> with WidgetsBindingObserver
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.refresh),
-              onPressed: () => petListBloc.updatePetList(),
+              onPressed: () => _updatePetList(),
             ),
             IconButton(
               icon: Icon(Icons.filter),
