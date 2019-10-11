@@ -37,7 +37,9 @@ class _MainHomePageState extends State<MainHomePage> with WidgetsBindingObserver
 
     if (state == AppLifecycleState.resumed) {
       print('we resumed');
-      _updatePetList();
+      if (petListBloc.needsRefresh()) {
+        _updatePetList();
+      }
     }
   }
 

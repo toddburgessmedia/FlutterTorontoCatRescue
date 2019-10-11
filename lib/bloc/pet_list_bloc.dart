@@ -38,6 +38,10 @@ class PetListBloc implements Bloc {
     _petListController.sink.add(petListProvider.filtered);
   }
 
+  bool needsRefresh() {
+    return petListProvider.isPetListOld();
+  }
+
   @override
   void dispose() {
     _petListController.close();

@@ -32,8 +32,8 @@ class PetListProvider {
 
  bool isPetListOld() {
 
-   var timeDiff = petListAge.difference(DateTime.now());
-   if (timeDiff.inHours > 6) {
+   var timeDiff = DateTime.now().difference(petListAge);
+   if (timeDiff.inHours >= 6) {
      return true;
    } else {
      return false;
