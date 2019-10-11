@@ -1,4 +1,5 @@
 
+import 'package:cat_adopt_flutter/ui/main/pet_list_error.dart';
 import 'package:cat_adopt_flutter/ui/main_home_page.dart';
 import 'package:cat_adopt_flutter/ui/splash_screen_page.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class TCRPetList extends StatelessWidget {
       ),
 //      home: MainHomePage(title: 'Toronto Cat Rescue'),
       home: SplashScreenPage(),
+
 
     );
   }

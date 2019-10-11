@@ -1,5 +1,6 @@
 
 import 'package:cat_adopt_flutter/ui/main/cat_list_grid_view.dart';
+import 'package:cat_adopt_flutter/ui/main/pet_list_error.dart';
 import 'package:cat_adopt_flutter/ui/main/pet_list_filter_alert.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cat_adopt_flutter/bloc/pet_list_bloc.dart';
@@ -83,7 +84,7 @@ class _MainHomePageState extends State<MainHomePage> with WidgetsBindingObserver
               if (snapshot.hasData) {
                 return CatListGridView(petList: snapshot.data);
               } else if (snapshot.hasError) {
-                return Center(child: Text ('Error'));
+                return PetListError();
               }
               return Center(child: CircularProgressIndicator()); // still waiting for data
             }
