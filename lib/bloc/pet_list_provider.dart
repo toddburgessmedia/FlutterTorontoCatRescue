@@ -7,6 +7,7 @@ import 'package:cat_adopt_flutter/repository/pet_list_repository_impl.dart';
 class PetListProvider {
 
  PetList petList = PetList(totalPets: 0,petCount: 0);
+ DateTime petListAge;
  final PetListRepository repo = PetListRepositoryImpl();
  
  PetList filtered = PetList();
@@ -24,7 +25,19 @@ class PetListProvider {
    final response = await repo.getPetList(start, end);
    petList = response;
 
+   petListAge = DateTime.now();
    return petList;
+
+ }
+
+ bool isPetListOld() {
+
+   var timeDiff = petListAge.difference(DateTime.now());
+   if (timeDiff.inHours > 6) {
+     return true;
+   } else {
+     return false;
+   }
 
  }
 
