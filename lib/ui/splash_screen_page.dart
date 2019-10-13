@@ -2,6 +2,7 @@
 import 'package:cat_adopt_flutter/ui/main_home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SplashScreenPage extends StatefulWidget {
 
@@ -17,12 +18,28 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   void initState() {
     super.initState();
 
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+
     /// Initialize data, then navigator to Home screen.
     _initData().then((value) {
       _navigateToHomeScreen();
     });
   }
 
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+  }
 
   Future _initData() async {
     await Future.delayed(Duration(seconds: 3));
