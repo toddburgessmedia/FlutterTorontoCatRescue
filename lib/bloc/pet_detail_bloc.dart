@@ -13,8 +13,9 @@ class PetDetailBloc implements Bloc {
   Stream<PetDetail> get petDetailStream => _petDetailController.stream;
 
   void getPetDetail(String petID) async {
-    await provider.getPetDetail(petID);
-    _petDetailController.sink.add(provider.petDetail);
+    provider.getPetDetail(petID)
+    .then((petDetail) => _petDetailController.sink.add(petDetail))
+    .catchError((error) => _petDetailController.sink.addError(error));
   }
 
   @override

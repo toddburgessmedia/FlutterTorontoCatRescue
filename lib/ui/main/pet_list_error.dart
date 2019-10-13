@@ -17,7 +17,6 @@ class PetListError extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Toronto Cat Rescue',)),
       body: Center(
         child: Column(
           children: <Widget>[

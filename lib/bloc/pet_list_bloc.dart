@@ -19,13 +19,9 @@ class PetListBloc implements Bloc {
 
   void updatePetList() async {
 
-    if (lazy) {
-      await petListProvider.loadPetListPage();
-    } else {
-      await petListProvider.loadPetListAll();
-    }
-
-    _petListController.sink.add(petListProvider.petList);
+    petListProvider.loadPetListAll()
+    .then((petList) => _petListController.sink.add(petList))
+    .catchError((error) => _petListController.sink.addError('We had a network error'));
   }
 
   void filterBySex(String sex) {

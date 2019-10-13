@@ -23,7 +23,7 @@ class PetListRepositoryImpl implements PetListRepository {
         services: [
           PetListService.create()
         ],
-        converter: JsonConverter()
+        converter: JsonConverter(),
     );
   }
 
