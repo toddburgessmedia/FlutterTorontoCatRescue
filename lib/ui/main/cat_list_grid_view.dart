@@ -42,25 +42,33 @@ class CatListGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      GridView.builder(
-      itemCount: petList.petList.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: _getGridSize(context)),
-      itemBuilder: (BuildContext context, int index) {
-        final pet = petList.petList[index];
-        return InkResponse(
-              onTap: () => _getPetDetailScreen(pet.petID, context),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Center(child: FadeInImage.assetNetwork(placeholder: 'images/tcr-placeholder.png',image: pet.resultsPhotoURL,height: 100)),
-                    Center(child: Text(pet.petName,style: TextStyle(fontWeight: FontWeight.bold),),),
-                    Center(child: Text(_getSex(pet.sex))),
-                    Center(child: Text(pet.primaryBreed)),
-                    Center(child: Text(_titleCase(pet.age)),)
-                  ]
-              )
+      Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: GridView.builder(
+        itemCount: petList.petList.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: _getGridSize(context)),
+        itemBuilder: (BuildContext context, int index) {
+          final pet = petList.petList[index];
+          return Container(
+            decoration: BoxDecoration(boxShadow: [BoxShadow(color: Colors.grey,blurRadius: 10)]),
+            child: Card(
+              child: InkResponse(
+                    onTap: () => _getPetDetailScreen(pet.petID, context),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Center(child: FadeInImage.assetNetwork(placeholder: 'images/tcr-placeholder.png',image: pet.resultsPhotoURL,height: 100)),
+                          Center(child: Text(pet.petName,style: TextStyle(fontWeight: FontWeight.bold),),),
+                          Center(child: Text(_getSex(pet.sex))),
+                          Center(child: Text(pet.primaryBreed)),
+                          Center(child: Text(_titleCase(pet.age)),)
+                        ]
+                    )
+                ),
+            ),
           );
-      },
-    );
+        },
+    ),
+      );
   }
 }

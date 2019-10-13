@@ -38,6 +38,7 @@ class _PetDetailBondedState extends State<PetDetailBonded> {
         child: Card(
           color: Colors.blue,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
+            elevation: 4,
             child: Column(
             children: <Widget>[
               Center(child: Text ('Bonded Pair Alert',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)),
