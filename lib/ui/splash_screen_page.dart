@@ -73,7 +73,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
               ),
 //              Image(
 //                image: AssetImage('images/adoptapet.png'),
-//                width: 200, 
+//                width: 200,
 //              ),
               Padding(
                 padding: const EdgeInsets.only(top: 70.0),

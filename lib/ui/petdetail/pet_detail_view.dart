@@ -34,19 +34,22 @@ class PetDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-          FittedBox(fit: BoxFit.contain ,child: Text("Meow. My name is ${petDetail.petName}", textScaleFactor: 2,)),
-          PetDetailPhoto(photos: petDetail.petImages),
-          PetDetailAdditionalInfo(info: petDetail),
-          PetDetailBonded(info: petDetail),
-          Html(data: petDetail.description),
-          RaisedButton(
-            onPressed: () => _getAdoptionScreen(petDetail,context),
-            child: getAdoptText()
-          )
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: ListView(
+        children: <Widget>[
+            FittedBox(fit: BoxFit.contain ,child: Text("Meow. My name is ${petDetail.petName}", textScaleFactor: 2,)),
+            PetDetailPhoto(photos: petDetail.petImages),
+            PetDetailAdditionalInfo(info: petDetail),
+            PetDetailBonded(info: petDetail),
+            Html(data: petDetail.description),
+            RaisedButton(
+              onPressed: () => _getAdoptionScreen(petDetail,context),
+              child: getAdoptText()
+            )
 
-      ]
+        ]
+      ),
     );
 
   }
