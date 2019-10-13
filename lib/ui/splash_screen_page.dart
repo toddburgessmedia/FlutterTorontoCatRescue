@@ -66,13 +66,22 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 175.0),
-                child: Text('Pet adoption and rescue powered by',style: TextStyle(fontSize: 16),),
+                padding: const EdgeInsets.only(top: 100.0),
+                child: Text('Pet adoption and rescue powered by\nAdopt-A-Pet',
+                  style: TextStyle(fontSize: 18),
+                  textAlign: TextAlign.center,),
               ),
-              Image(
-                image: AssetImage('images/adoptapet.png'),
-                width: 200,
-              ),
+//              Image(
+//                image: AssetImage('images/adoptapet.png'),
+//                width: 200, 
+//              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 70.0),
+                child: Text('Developed by\nTodd Burgess',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold),),
+              )
             ],
           )),
     );
