@@ -17,6 +17,7 @@ class PetDetailPhoto extends StatefulWidget {
 class _PetDetailPhotoState extends State<PetDetailPhoto> {
 
   String displayphoto;
+  String placeHolder = 'images/tcr-placeholder.png';
 
 
   @override
@@ -28,6 +29,7 @@ class _PetDetailPhotoState extends State<PetDetailPhoto> {
 
   void _changeImage(String newPhoto) {
     setState(() {
+      placeHolder = displayphoto;
       displayphoto = newPhoto;
     });
   }
@@ -36,7 +38,7 @@ class _PetDetailPhotoState extends State<PetDetailPhoto> {
   Widget build(BuildContext context) {
     return Column (
         children: <Widget>[
-          FadeInImage.assetNetwork(placeholder: 'images/tcr-placeholder.png' , image: displayphoto,height: 350, ),
+          FadeInImage.assetNetwork(placeholder: placeHolder , image: displayphoto,height: 350, ),
             Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: widget.photos.map((photo) =>
@@ -45,7 +47,7 @@ class _PetDetailPhotoState extends State<PetDetailPhoto> {
                     child: InkWell(
                         onTap: () => _changeImage(photo.originalUrl) ,
                         child:
-                          FadeInImage.assetNetwork(placeholder: 'images/tcr-placeholder.png' , image: photo.thumbnailUrl,height: 100, )
+                          FadeInImage.assetNetwork(placeholder: placeHolder , image: photo.thumbnailUrl,height: 100, )
                   )
 
                   )).toList()
