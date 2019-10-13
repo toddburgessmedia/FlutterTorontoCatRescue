@@ -37,7 +37,8 @@ class _PetDetailBondedState extends State<PetDetailBonded> {
         onTap: () => _getPetDetailScreen(context),
         child: Card(
           color: Colors.blue,
-          child: Column(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
+            child: Column(
             children: <Widget>[
               Center(child: Text ('Bonded Pair Alert',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)),
               Row(
