@@ -39,11 +39,11 @@ class _PetDetailBondedState extends State<PetDetailBonded> {
           color: Colors.blue,
           child: Column(
             children: <Widget>[
-              Center(child: Text ('Bonded Pair Alert',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+              Center(child: Text ('Bonded Pair Alert',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)),
               Row(
                 children: <Widget>[
                   Flexible(child: Text('${widget.info.petName} is best friends with ${widget.info.bondedFriend.pet.petName} '
-                      'and they need to be adopted together',style: TextStyle(fontSize: 18),)),
+                      'and they need to be adopted together',style: TextStyle(fontSize: 14),textAlign: TextAlign.center,)),
                   Image.network(widget.info.bondedFriend.pet.images[0].thumbnailUrl,width: 150,)
                 ],
               )

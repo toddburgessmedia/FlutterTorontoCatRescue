@@ -41,28 +41,31 @@ class _PetAdoptPageState extends State<PetAdoptPage> {
         appBar: AppBar(
         title: Text('Adopt'),
     ),
-    body: ListView(
-      children: <Widget>[
-        Center(child: Text('Please read carefully',style: TextStyle(fontWeight: FontWeight.bold),)),
-        //_displayAdoptionProcess(info.adoptionProcess, context),
-        Html(data: widget.info.adoptionProcess),
-        Center(child: Text('Contact the Adoption Team',style: TextStyle(fontWeight: FontWeight.bold),)),
-        Center(
-          child: ButtonBar(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              RaisedButton(
-                child: Text('E-Mail'),
-                onPressed: () => _emailAdoptionTeam(),
-              ),
-              RaisedButton(
-                child: Text('Call'),
-                onPressed: () => _callAdoptionTeam(),
-              ),
-            ],
-          ),
-        )
-      ],
+    body: Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: ListView(
+        children: <Widget>[
+          Center(child: Text('Please read carefully',style: TextStyle(fontWeight: FontWeight.bold),)),
+          //_displayAdoptionProcess(info.adoptionProcess, context),
+          Html(data: widget.info.adoptionProcess),
+          Center(child: Text('Contact the Adoption Team',style: TextStyle(fontWeight: FontWeight.bold),)),
+          Center(
+            child: ButtonBar(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text('E-Mail'),
+                  onPressed: () => _emailAdoptionTeam(),
+                ),
+                RaisedButton(
+                  child: Text('Call'),
+                  onPressed: () => _callAdoptionTeam(),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     )
     );
   }

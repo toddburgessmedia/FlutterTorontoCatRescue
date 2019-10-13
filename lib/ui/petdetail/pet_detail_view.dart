@@ -40,8 +40,14 @@ class PetDetailView extends StatelessWidget {
         children: <Widget>[
             FittedBox(fit: BoxFit.contain ,child: Text("Meow. My name is ${petDetail.petName}", textScaleFactor: 2,)),
             PetDetailPhoto(photos: petDetail.petImages),
-            PetDetailAdditionalInfo(info: petDetail),
-            PetDetailBonded(info: petDetail),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: PetDetailAdditionalInfo(info: petDetail),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: PetDetailBonded(info: petDetail),
+            ),
             Html(data: petDetail.description),
             RaisedButton(
               onPressed: () => _getAdoptionScreen(petDetail,context),
