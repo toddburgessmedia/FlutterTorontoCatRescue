@@ -37,7 +37,10 @@ class _PetDetailPhotoState extends State<PetDetailPhoto> {
           items: widget.photos.map((image) {
             return Builder(
               builder: (BuildContext context) {
-                return Image.network(image.originalUrl);
+                return Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Image.network(image.originalUrl),
+                );
               },
             );
           }).toList(),
