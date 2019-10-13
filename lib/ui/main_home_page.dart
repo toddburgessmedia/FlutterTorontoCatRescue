@@ -47,9 +47,9 @@ class _MainHomePageState extends State<MainHomePage> with WidgetsBindingObserver
   void _updatePetList() {
     petListBloc.updatePetList();
     Flushbar(
-      title: 'Refreshing Cat List',
+      title: 'Refreshing Cats',
       message: 'Updating the list of adorable cats',
-      duration: Duration(seconds: 5),
+      duration: Duration(seconds: 4),
       icon: Icon(Icons.refresh,color: Colors.white,),
     )..show(context);
   }
@@ -98,7 +98,6 @@ class _MainHomePageState extends State<MainHomePage> with WidgetsBindingObserver
                   DrawerHeader(
                     child: Image(
                       image: AssetImage('images/TCR-Logo-RGB.jpg'),
-                      height: 150,
                     ),
                   ),
                 ListTile(
