@@ -14,13 +14,12 @@ class SplashScreenPage extends StatefulWidget {
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
 
+  double screenFactor = 1.0;
+
+
   @override
   void initState() {
     super.initState();
-
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
 
     /// Initialize data, then navigator to Home screen.
     _initData().then((value) {
@@ -28,18 +27,6 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     });
   }
 
-
-  @override
-  void dispose() {
-    super.dispose();
-
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-  }
 
   Future _initData() async {
     await Future.delayed(Duration(seconds: 3));
@@ -54,36 +41,43 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Container(
-          color: Colors.white,
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 200.0),
-                child: Image(
-                  image: AssetImage('images/TCR-Logo-RGB.jpg'),
-                  height: 200,
+      child: OrientationBuilder(
+        builder: (context,orientation) {
+          if (orientation == Orientation.landscape)
+            screenFactor = 3.0;
+          else
+            screenFactor = 1.0;
+        return Container(
+            color: Colors.white,
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(top: 200.0/screenFactor),
+                  child: Image(
+                    image: AssetImage('images/TCR-Logo-RGB.jpg'),
+                    height: 200/screenFactor,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 100.0),
-                child: Text('Pet adoption and rescue powered by\nAdopt-A-Pet',
-                  style: TextStyle(fontSize: 18),
-                  textAlign: TextAlign.center,),
-              ),
+                Padding(
+                  padding: EdgeInsets.only(top: 100.0/screenFactor),
+                  child: Text('Pet adoption and rescue powered by\nAdopt-A-Pet',
+                    style: TextStyle(fontSize: 18),
+                    textAlign: TextAlign.center,),
+                ),
 //              Image(
 //                image: AssetImage('images/adoptapet.png'),
 //                width: 200,
 //              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 70.0),
-                child: Text('Developed by\nTodd Burgess',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold),),
-              )
-            ],
-          )),
+                Padding(
+                  padding: EdgeInsets.only(top: 70.0/screenFactor),
+                  child: Text('Developed by\nTodd Burgess',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold),),
+                )
+              ],
+            ),);},
+      ),
     );
   }
 }
