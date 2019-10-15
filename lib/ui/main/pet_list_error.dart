@@ -5,7 +5,36 @@ import 'package:flutter/material.dart';
 
 import '../main_home_page.dart';
 
-class PetListError extends StatelessWidget {
+class PetListError extends StatefulWidget {
+
+  @override
+  _PetListErrorState createState() => _PetListErrorState();
+}
+
+class _PetListErrorState extends State<PetListError> with WidgetsBindingObserver {
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+
+    if (state == AppLifecycleState.resumed) {
+      print('we resumed');
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainHomePage(title: 'Toronto Cat Rescue',)));
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    WidgetsBinding.instance.removeObserver(this);
+  }
+
+
 
   void _tryAgain(BuildContext context) {
 

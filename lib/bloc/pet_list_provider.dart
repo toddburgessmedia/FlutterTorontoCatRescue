@@ -7,7 +7,7 @@ import 'package:cat_adopt_flutter/repository/pet_list_repository_impl.dart';
 class PetListProvider {
 
  PetList petList = PetList(totalPets: 0,petCount: 0);
- DateTime petListAge;
+ DateTime petListAge = DateTime.now().subtract(Duration(hours: 12));
  final PetListRepository repo = PetListRepositoryImpl();
  
  PetList filtered = PetList();
