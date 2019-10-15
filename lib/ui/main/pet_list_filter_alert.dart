@@ -17,30 +17,45 @@ class PetListFilterAlert extends StatelessWidget {
     return
         AlertDialog(
           title: Text('Filter Cats by'),
-          content: Row(
-            children: <Widget>[
-              DropdownButton<String>(
-                items: sexList.map((sexItem) =>
-                    DropdownMenuItem<String>(
-                      value: sexItem.substring(0,1).toLowerCase(),
-                      child: Text(sexItem),
-                    )
-                ).toList(),
-                hint: Text('Select Sex'),
+          content: ConstrainedBox(
+            constraints: BoxConstraints(maxHeight: 100),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text('Select Gender'),
+                    DropdownButton<String>(
+                      items: sexList.map((sexItem) =>
+                          DropdownMenuItem<String>(
+                            value: sexItem.substring(0,1).toLowerCase(),
+                            child: Text(sexItem),
+                          )
+                      ).toList(),
+                      hint: Text('Any Gender'),
 //              value: "m",
-                onChanged: (sexValue) => petListBloc.filterBySex(sexValue),
-              ),
-              DropdownButton<String>(
-                  items: ageList.map((ageItem) =>
-                      DropdownMenuItem<String>(
-                        value: ageItem.toLowerCase(),
-                        child: Text(ageItem),
-                      )
-                  ).toList(),
-                  hint: Text('Choose Age'),
-                  onChanged: (ageValue) => petListBloc.filterByAge(ageValue)
-              ),
-            ],
+                      onChanged: (sexValue) => petListBloc.filterBySex(sexValue),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text('Select Age'),
+                    DropdownButton<String>(
+                        items: ageList.map((ageItem) =>
+                            DropdownMenuItem<String>(
+                              value: ageItem.toLowerCase(),
+                              child: Text(ageItem),
+                            )
+                        ).toList(),
+                        hint: Text('Any Age'),
+                        onChanged: (ageValue) => petListBloc.filterByAge(ageValue)
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
           actions: <Widget>[
             FlatButton(
