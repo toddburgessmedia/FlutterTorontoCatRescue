@@ -24,7 +24,7 @@ class _PetListErrorState extends State<PetListError> with WidgetsBindingObserver
 
     if (state == AppLifecycleState.resumed) {
       print('we resumed');
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainHomePage(title: 'Toronto Cat Rescue',)));
+      _tryAgain(context);
     }
   }
 
@@ -38,7 +38,6 @@ class _PetListErrorState extends State<PetListError> with WidgetsBindingObserver
 
   void _tryAgain(BuildContext context) {
 
-    petListBloc.updatePetList();
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainHomePage(title: 'Toronto Cat Rescue',)));
 
   }

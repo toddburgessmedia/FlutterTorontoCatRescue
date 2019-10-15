@@ -40,7 +40,6 @@ class _PetDetailErrorState extends State<PetDetailError> with WidgetsBindingObse
 
 
   void _tryAgain(BuildContext context) {
-    petListBloc.updatePetList();
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PetDetailPage(petID: widget.petID,)));
   }
 
