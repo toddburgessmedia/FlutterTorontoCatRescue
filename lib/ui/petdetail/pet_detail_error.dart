@@ -5,17 +5,43 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
-class PetDetailError extends StatelessWidget {
+class PetDetailError extends StatefulWidget {
 
   final String petID;
 
   PetDetailError({Key key, this.petID}) : super();
 
+  @override
+  _PetDetailErrorState createState() => _PetDetailErrorState();
+}
+
+class _PetDetailErrorState extends State<PetDetailError> with WidgetsBindingObserver {
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+
+    if (state == AppLifecycleState.resumed) {
+      print('we resumed');
+      _tryAgain(context);
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    WidgetsBinding.instance.removeObserver(this);
+  }
+
+
   void _tryAgain(BuildContext context) {
-
     petListBloc.updatePetList();
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PetDetailPage(petID: petID,)));
-
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PetDetailPage(petID: widget.petID,)));
   }
 
   @override
