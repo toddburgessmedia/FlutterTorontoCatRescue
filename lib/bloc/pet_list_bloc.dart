@@ -38,6 +38,14 @@ class PetListBloc implements Bloc {
     return petListProvider.isPetListOld();
   }
 
+  String getCurrentSex() {
+    return petListProvider.sexFilter;
+  }
+
+  String getCurrentAge() {
+    return petListProvider.ageFilter;
+  }
+
   @override
   void dispose() {
     _petListController.close();
