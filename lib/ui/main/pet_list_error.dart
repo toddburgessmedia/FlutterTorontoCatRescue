@@ -13,10 +13,13 @@ class PetListError extends StatefulWidget {
 
 class _PetListErrorState extends State<PetListError> with WidgetsBindingObserver {
 
+  double screenFactor = 1.0;
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+
   }
 
   @override
@@ -44,25 +47,33 @@ class _PetListErrorState extends State<PetListError> with WidgetsBindingObserver
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(75.0),
-              child: Icon(Icons.error,size: 120,),
-            ),
-            Text('Unable to load cats\nPlease check network connection and try again',textScaleFactor: 2,textAlign: TextAlign.center,),
-            Padding(
-              padding: const EdgeInsets.all(40.0),
-              child: RaisedButton(
-                onPressed: () => _tryAgain(context),
-                child: Text('Try Again'),
-              ),
-            )
-          ],
 
-        ),
+    return Scaffold(
+      body: OrientationBuilder(
+        builder: (context,orientation) {
+          if (orientation == Orientation.landscape)
+            screenFactor = 3.0;
+          else
+            screenFactor = 1.0;
+          return Center(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.all(75.0/screenFactor),
+                child: Icon(Icons.error,size: 120/screenFactor),
+              ),
+              Text('Unable to load cats\nPlease check network connection and try again',textScaleFactor: 2,textAlign: TextAlign.center,),
+              Padding(
+                padding: EdgeInsets.all(40.0/screenFactor),
+                child: RaisedButton(
+                  onPressed: () => _tryAgain(context),
+                  child: Text('Try Again'),
+                ),
+              )
+            ],
+
+          ),
+        );},
       ),
 
     );
