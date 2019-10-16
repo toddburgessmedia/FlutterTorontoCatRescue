@@ -4,6 +4,7 @@ import 'package:cat_adopt_flutter/model/pet_detail_info.dart';
 import 'package:cat_adopt_flutter/ui/pet_adopt_page.dart';
 import 'package:cat_adopt_flutter/ui/petdetail/pet_detail_additional_info.dart';
 import 'package:cat_adopt_flutter/ui/petdetail/pet_detail_bonded.dart';
+import 'package:cat_adopt_flutter/ui/petdetail/pet_detail_facts.dart';
 import 'package:cat_adopt_flutter/ui/petdetail/pet_detail_photo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,25 +37,29 @@ class PetDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(12.0),
-      child: ListView(
-        children: <Widget>[
-            FittedBox(fit: BoxFit.contain ,child: Text("Meow. My name is ${petDetail.petName}", textScaleFactor: 2,)),
-            PetDetailPhoto(photos: petDetail.petImages),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: PetDetailAdditionalInfo(info: petDetail),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: PetDetailBonded(info: petDetail),
-            ),
-            Html(data: petDetail.description),
-            RaisedButton(
-              onPressed: () => _getAdoptionScreen(petDetail,context),
-              child: getAdoptText()
-            )
+      child: SingleChildScrollView(
+        child: Column(
+          //shrinkWrap: true,
+          children: <Widget>[
+              FittedBox(fit: BoxFit.contain ,child: Text("Meow. My name is ${petDetail.petName}", textScaleFactor: 2,)),
+              PetDetailPhoto(photos: petDetail.petImages),
+              PetDetailFacts(petDetail: petDetail,),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: PetDetailAdditionalInfo(info: petDetail),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: PetDetailBonded(info: petDetail),
+              ),
+              Html(data: petDetail.description),
+              RaisedButton(
+                onPressed: () => _getAdoptionScreen(petDetail,context),
+                child: getAdoptText()
+              )
 
-        ]
+          ]
+        ),
       ),
     );
 
