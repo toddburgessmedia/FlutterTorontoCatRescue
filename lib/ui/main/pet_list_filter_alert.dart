@@ -16,7 +16,7 @@ class PetListFilterAlert extends StatefulWidget {
 
 class _PetListFilterAlertState extends State<PetListFilterAlert> {
 
-  final sexList = ['Any Gender','Male','Female'];
+  final sexList = ['Any Sex','Male','Female'];
   var sexListValue = petListBloc.getCurrentSex();
 
   final ageList = ['Any Age','Kitten','Young','Adult','Senior'];
@@ -43,7 +43,7 @@ class _PetListFilterAlertState extends State<PetListFilterAlert> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text('Select Gender'),
+                    Text('Select Sex'),
                     DropdownButton<String>(
                       value: sexListValue,
                       items: sexList.map((sexItem) =>

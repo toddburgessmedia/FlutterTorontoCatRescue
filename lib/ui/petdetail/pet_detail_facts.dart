@@ -54,7 +54,7 @@ class _PetDetailFactsState extends State<PetDetailFacts> {
                 GridTile(
                   child: RichText(
                     text: TextSpan(
-                        text: 'Gender: ',
+                        text: 'Sex: ',
                         style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
                         children: <TextSpan>[
                           TextSpan(text: widget.petDetail.sex, style: TextStyle(fontWeight: FontWeight.normal)),
