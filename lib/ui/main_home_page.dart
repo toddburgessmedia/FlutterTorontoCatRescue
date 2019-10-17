@@ -1,4 +1,5 @@
 
+import 'package:cat_adopt_flutter/ui/main/about_alert.dart';
 import 'package:cat_adopt_flutter/ui/main/cat_list_grid_view.dart';
 import 'package:cat_adopt_flutter/ui/main/pet_list_error.dart';
 import 'package:cat_adopt_flutter/ui/main/pet_list_filter_alert.dart';
@@ -65,6 +66,17 @@ class _MainHomePageState extends State<MainHomePage> with WidgetsBindingObserver
     );
   }
 
+  Future<void> _showAboutAlert() {
+
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AboutAlert();
+      }
+    );
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +90,13 @@ class _MainHomePageState extends State<MainHomePage> with WidgetsBindingObserver
             IconButton(
               icon: Icon(Icons.filter),
               onPressed: () => _showFilterAlert(context),
-            )
+            ),
+            PopupMenuButton(
+              itemBuilder: (_) => <PopupMenuEntry<String>>[
+                PopupMenuItem<String>(child: Text('About'),value: 'about',)
+              ],
+              onSelected: (_) => _showAboutAlert(),
+            ),
           ],
         ),
         body: StreamBuilder(
