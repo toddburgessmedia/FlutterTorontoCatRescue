@@ -6,7 +6,8 @@ class AboutAlert extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text('About'),
-      content: Text('Toronto Cat Rescue App\n\nDeveloped by:\nTodd Burgess',textAlign: TextAlign.center,),
+      content: Text('Toronto Cat Rescue is a no-kill, non-profit, registered charity #72088-4691-RR000\n\n'
+          'Toronto Cat Rescue App\nDeveloped by:\nTodd Burgess',textAlign: TextAlign.center,),
       actions: <Widget>[
         FlatButton(
           child: Text('Cool'),
