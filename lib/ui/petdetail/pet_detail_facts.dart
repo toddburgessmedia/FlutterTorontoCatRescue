@@ -36,6 +36,14 @@ class _PetDetailFactsState extends State<PetDetailFacts> {
               childAspectRatio: 25,
               children: <Widget>[
                 GridTile(
+                  child: RichText(
+                    text: TextSpan(
+                        text: 'Age: ',
+                        style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
+                        children: <TextSpan>[
+                          TextSpan(text: widget.petDetail.age, style: TextStyle(fontWeight: FontWeight.normal)),
+                        ]),),),
+                GridTile(
                     child: RichText(
                         text: TextSpan(
                           text: 'Breed: ',
