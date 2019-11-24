@@ -1,0 +1,80 @@
+Release Steps for Android on Flutter
+
+Enable Developer Options on Android Device
+https://developer.android.com/studio/debug/dev-options
+
+Prepare a Release Build
+
+Add a Launcher Icon
+Check out: https://pub.dev/packages/flutter_launcher_icons
+
+Create a Key Store
+keytool -genkey -v -keystore ~/key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key
+
+DO NOT CHECK IN key.jks FILE INTO GIT
+
+Create <app dir>/android/key.properties
+
+storePassword=<password from previous step>
+keyPassword=<password from previous step>
+keyAlias=key
+storeFile=<location of the key store file, such as /Users/<user name>/key.jks>
+
+
+The Following Changes apply to app/build.grade
+
+Set the VersionCode and VersionNumber
+
+Version code must be an integer 
+Version number is a string
+
+Add the following above "android {"
+
+   def keystoreProperties = new Properties()
+   def keystorePropertiesFile = rootProject.file('key.properties')
+   if (keystorePropertiesFile.exists()) {
+       keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+   }
+
+Create the applicationId
+
+Add the following to android { }
+
+signingConfigs {
+       release {
+           keyAlias keystoreProperties['keyAlias']
+           keyPassword keystoreProperties['keyPassword']
+           storeFile file(keystoreProperties['storeFile'])
+           storePassword keystoreProperties['storePassword']
+       }
+}
+
+Replace the release block in buildTypes 
+
+release {
+    signingConfig signingConfigs.release
+}
+
+Skip The ProGuard steps. Add at your discretion
+
+VERY IMPORTANT: Add AndroidManifest.xml permission to main version
+
+Try to run the release version:
+
+flutter run --release
+
+To build the Google Play Store files:
+
+flutter build appbundle
+
+Before releasing review the Developer Policy Centre
+
+https://play.google.com/about/developer-content-policy/
+
+Assemble Play Store image assets
+
+https://support.google.com/googleplay/android-developer/answer/1078870?hl=en
+
+Create app on Google Developer Console
+
+

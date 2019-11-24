@@ -49,13 +49,13 @@ class CatListGridView extends StatelessWidget {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: _getGridSize(context)),
         itemBuilder: (BuildContext context, int index) {
           final pet = petList.petList[index];
-          return Container(
-            decoration: BoxDecoration(boxShadow: [BoxShadow(color: Colors.grey,blurRadius: 10)]),
-            child: Card(
+          return Card(
+            child: FittedBox(
+              fit: BoxFit.fitHeight,
               child: InkResponse(
                     onTap: () => _getPetDetailScreen(pet.petID, context),
                     child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
                           Center(child: FadeInImage.assetNetwork(placeholder: 'images/tcr-placeholder.png',image: pet.resultsPhotoURL,height: 100)),
                           Center(child: Text(pet.petName,style: TextStyle(fontWeight: FontWeight.bold),),),
