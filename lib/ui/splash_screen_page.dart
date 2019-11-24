@@ -47,39 +47,37 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
             screenFactor = 3.0;
           else
             screenFactor = 1.0;
-        return Container(
-            color: Colors.white,
-            child: FittedBox(
-              fit: BoxFit.fitHeight,
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(top: 125.0/screenFactor),
-                    child: Image(
-                      image: AssetImage('images/TCR-Logo-RGB.jpg'),
-                      height: 200/screenFactor,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 80.0/screenFactor),
-                    child: Text('Pet adoption and rescue powered by\nAdopt-A-Pet',
-                      style: TextStyle(fontSize: 18),
-                      textAlign: TextAlign.center,),
-                  ),
+        return FittedBox(
+          fit: BoxFit.fitHeight,
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(top: 125.0/screenFactor),
+                child: Image(
+                  image: AssetImage('images/TCR-Logo-RGB.jpg'),
+                  height: 200/screenFactor,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 80.0/screenFactor),
+                child: Text('Pet adoption and rescue powered by\nAdopt-A-Pet',
+                  style: TextStyle(fontSize: 18),
+                  textAlign: TextAlign.center,),
+              ),
 //              Image(
 //                image: AssetImage('images/adoptapet.png'),
 //                width: 200,
 //              ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 60.0/screenFactor),
-                    child: Text('Developed by\nTodd Burgess',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold),),
-                  )
-                ],
-              ),
-            ),);},
+              Padding(
+                padding: EdgeInsets.only(top: 60.0/screenFactor),
+                child: Text('Developed by\nTodd Burgess',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold),),
+              )
+            ],
+          ),
+        );},
       ),
     );
   }
