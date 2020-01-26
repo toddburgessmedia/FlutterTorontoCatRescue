@@ -6,56 +6,51 @@ import 'package:cat_adopt_flutter/repository/pet_list_repository_impl.dart';
 
 class PetListProvider {
 
- PetList petList = PetList(totalPets: 0,petCount: 0);
- DateTime petListAge = DateTime.now().subtract(Duration(hours: 12));
- final PetListRepository repo = PetListRepositoryImpl();
- 
- PetList filtered = PetList();
- String sexFilter = 'a';
- String ageFilter = 'any age';
+  PetList petList = PetList(totalPets: 0, petCount: 0);
+  DateTime petListAge = DateTime.now().subtract(Duration(hours: 12));
+  final PetListRepository repo = PetListRepositoryImpl();
 
- int petCount = 0;
- final int increment = 24;
- int start = 1;  // always start at 1 due to API
- int end = 0;
+  PetList filtered = PetList();
+  String sexFilter = 'a';
+  String ageFilter = 'any age';
 
- Future<PetList> loadPetListAll() async {
+  int petCount = 0;
+  final int increment = 24;
+  int start = 1; // always start at 1 due to API
+  int end = 0;
 
-   end = 2000;
-   final response = await repo.getPetList(start, end);
-   petList = response;
+  Future<PetList> loadPetListAll() async {
+    end = 2000;
+    final response = await repo.getPetList(start, end);
+    petList = response;
 
-   petListAge = DateTime.now();
-   return petList;
+    petListAge = DateTime.now();
+    return petList;
+  }
 
- }
+  bool isPetListOld() {
+    var timeDiff = DateTime.now().difference(petListAge);
+    if (timeDiff.inHours >= 6) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
- bool isPetListOld() {
+  Future<PetList> loadPetListPage() async {
+    if (petCount == 0) {
+      getPetCount();
+      end = increment;
+      loadPetListAll();
+    } else {
+      start = end;
+      end += increment;
+    }
 
-   var timeDiff = DateTime.now().difference(petListAge);
-   if (timeDiff.inHours >= 6) {
-     return true;
-   } else {
-     return false;
-   }
-
- }
-
- Future<PetList> loadPetListPage() async {
-
-   if (petCount == 0) {
-     getPetCount();
-     end = increment;
-     loadPetListAll();
-   } else {
-     start = end;
-     end += increment;
-   }
-
-   print ('start $start end $end');
-   //final response = await repo.getPetList(start, end);
-   //final petListPage = response;
-   //print('total page pets : ${petListPage.totalPets}');
+    print('start $start end $end');
+    //final response = await repo.getPetList(start, end);
+    //final petListPage = response;
+    //print('total page pets : ${petListPage.totalPets}');
 
 //   if (petList.petList != null) {
 //     petList.petList.addAll(petListPage.petList);
@@ -64,47 +59,19 @@ class PetListProvider {
 //     petList = petListPage;
 //   }
 
-   return petList;
- }
+    return petList;
+  }
 
- Future<void> getPetCount() async {
+  Future<void> getPetCount() async {
+    petCount = await repo.getPetListMetaCount();
+  }
 
-   petCount = await repo.getPetListMetaCount();
+  void filterResults({String sex = 'a', String age = 'any age'}) {
+    sexFilter = sex;
+    ageFilter = age;
 
- }
- 
- void getPetsBySex(String sex) {
-
-   sexFilter = sex;
-
-   if (sex == 'a') {
-     filtered.petList = petList.petList;
-   } else {
-     filterResults();
-   }
- }
-
- void filterResults() {
-
-   if ((sexFilter == 'a') && (ageFilter != 'any age')) {
-     filtered.petList = petList.petList.where((pet) => pet.age == ageFilter).toList();
-   } else if ((sexFilter != 'a') && (ageFilter == 'any age')) {
-     filtered.petList = petList.petList.where((pet) => pet.sex == sexFilter).toList();
-   } else {
-     filtered.petList = petList.petList.where((pet) => pet.sex == sexFilter && pet.age == ageFilter).toList();
-   }
- }
-
-
- void getPetsByAge(String age) {
-
-   ageFilter = age;
-
-   if (age == 'any age') {
-     filtered.petList = petList.petList;
-   } else {
-     filterResults();
-   }
- }
+    filtered.petList = petList.petList.where((pet) => pet.age == age || age == 'any age').toList();
+    filtered.petList = filtered.petList.where((pet) => pet.sex == sex || sex == 'a').toList();
+  }
 
 }

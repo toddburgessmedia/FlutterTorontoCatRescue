@@ -23,8 +23,7 @@ class _PetListFilterAlertState extends State<PetListFilterAlert> {
   var ageListValue = petListBloc.getCurrentAge();
 
   void _resetValues() {
-    petListBloc.filterBySex('a');
-    petListBloc.filterByAge('any age');
+    petListBloc.filterResults();
     setState(() {
       sexListValue = 'a';
       ageListValue = 'any age';
@@ -54,7 +53,7 @@ class _PetListFilterAlertState extends State<PetListFilterAlert> {
                       ).toList(),
                       hint: Text('Any Gender'),
                       onChanged: (sexValue) {
-                        petListBloc.filterBySex(sexValue);
+                        petListBloc.filterResults(sex: sexValue,age: ageListValue);
                         setState(() {
                           sexListValue = sexValue;
                         });
@@ -76,7 +75,7 @@ class _PetListFilterAlertState extends State<PetListFilterAlert> {
                         ).toList(),
                         hint: Text('Any Age'),
                         onChanged: (ageValue) {
-                          petListBloc.filterByAge(ageValue);
+                          petListBloc.filterResults(age: ageValue,sex: sexListValue);
                           setState(() {
                             ageListValue = ageValue;
                           });

@@ -24,13 +24,8 @@ class PetListBloc implements Bloc {
     .catchError((error) => _petListController.sink.addError('We had a network error'));
   }
 
-  void filterBySex(String sex) {
-    petListProvider.getPetsBySex(sex);
-    _petListController.sink.add(petListProvider.filtered);
-  }
-
-  void filterByAge(String age) {
-    petListProvider.getPetsByAge(age);
+  void filterResults({String age = 'any age',String sex='a'}) {
+    petListProvider.filterResults(sex: sex,age: age);
     _petListController.sink.add(petListProvider.filtered);
   }
 
